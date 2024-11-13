@@ -1,19 +1,18 @@
+using DKDLLActivity;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PluginTester : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rig;
-    public float speed;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        PlayerMove player = FindFirstObjectByType<PlayerMove>();
+        player.speed = SpeedChanger.Instance.Execute(player.speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rig.linearVelocity = new Vector2 (Input.GetAxis("Horizontal") * speed, 0);
+        
     }
 }
